@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark/Light Theme</title>
+  <style>
+    .da
+    rkmode {
+      background-color: black;
+      color: aliceblue;
+    }
+    .darkmode button {
+      background-color: bisque;
+      color: black;
+    }
+    .lightmode {
+      background-color: aliceblue;
+      color: black;
+    }
+    .lightmode button {
+      background-color: gray;
+      color: black;
+    }
+  </style>
+</head>
+<body class="lightmode">
+  <h1>Dark/Light Theme</h1>
+  <p>Do you need a dark theme or light theme?</p>
+  <button id="toggle-button">Enable Dark Mode</button>
+
+  <script>
+    const button = document.getElementById("toggle-button");
+    const body = document.body;
+
+    button.addEventListener("click", function () {
+      if (body.classList.contains("lightmode")) {
+        body.classList.remove("lightmode");
+        body.classList.add("darkmode");
+        button.textContent = "Enable Light Mode";
+      } else {
+        body.classList.remove("darkmode");
+        body.classList.add("lightmode");
+        button.textContent = "Enable Dark Mode";
+      }
+    });
+  </script>
+</body>
+</html>
+<br>
+
+<p>You define two themes in CSS: .lightmode and .darkmode. Each sets page colors and also styles the button differently.
+
+The <body> starts with class="lightmode", so the page loads in light mode.
+
+In JavaScript:
+
+You get the button and the body elements.
+
+You attach a click handler to the button.
+
+On each click, you check which theme is active using classList.contains(...), then swap classes so the body always has exactly one of the two: lightmode or darkmode.
+
+You update the button’s text so it always shows the next action the user can take.
+
+Nice optional upgrades (if you want)
+
+Smooth fade: add transition: background-color .25s, color .25s; to .lightmode, .darkmode and to .lightmode button, .darkmode button for a gentle color transition.
+
+Remember choice: store the theme in localStorage so it persists after refresh.
+
+System default: detect prefers-color-scheme and start with the user’s OS theme.
+
+Want me to add the smooth transition + saving the theme to localStorage for you?</p>
